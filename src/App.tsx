@@ -1,9 +1,12 @@
-import React from "react";
+import ExpenseItem from "./components/ExpenseItem";
 
-import "./App.css";
-
-function App() {
-  return <div className="App">Learn React</div>;
-}
+const App = () => {
+  return (
+    <div className="App">
+      <h2>Learn React</h2>
+      <ExpenseItem />
+    </div>
+  );
+};
 
 export default App;
