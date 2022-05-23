@@ -1,6 +1,7 @@
 import ExpenseItem from "./ExpenseItem";
 import "./css/Expenses.css";
 import React from "react";
+import Card from "./Card";
 
 interface Item {
   items: {
@@ -15,7 +16,7 @@ const Expense = (props: Item) => {
   return (
     <React.Fragment>
       <h2>Learn React</h2>
-      <div className="expenses">
+      <Card className="expenses">
         <ExpenseItem
           title={props.items[0].title}
           amount={props.items[0].amount}
@@ -36,7 +37,7 @@ const Expense = (props: Item) => {
           amount={props.items[3].amount}
           date={props.items[3].date}
         />
-      </div>
+      </Card>
     </React.Fragment>
   );
 };
