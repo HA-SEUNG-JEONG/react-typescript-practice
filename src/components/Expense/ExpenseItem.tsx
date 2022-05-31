@@ -1,11 +1,12 @@
 import InfoData from "../../info";
 import "./css/ExpenseItem.css";
 import ExpenseDate from "./ExpenseDate";
-import Card from "../Card";
+import Card from "../UI/Card";
 import { useState } from "react";
 
 const ExpenseItem = (props: InfoData) => {
   const [title, setTitle] = useState(props.title);
+  console.log("ExpenseItem 평가됨");
 
   const onHandleClick = () => {
     setTitle("updated");
