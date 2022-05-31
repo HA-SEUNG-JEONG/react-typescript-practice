@@ -1,4 +1,4 @@
-import InfoData from "../info";
+import InfoData from "../../info";
 import "./css/ExpenseDate.css";
 
 const ExpenseDate = (props: InfoData) => {

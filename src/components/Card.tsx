@@ -1,4 +1,4 @@
-import "./css/Card.css";
+import "./Card.css";
 
 interface Props {
   className: string;
