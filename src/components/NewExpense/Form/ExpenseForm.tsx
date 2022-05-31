@@ -1,12 +1,18 @@
+import { SyntheticEvent } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
+  const onTitleChange = (event: SyntheticEvent) => {
+    const target = event.target as HTMLInputElement;
+
+    console.log(target.value);
+  };
   return (
     <form>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" />
+          <input type="text" onChange={onTitleChange} />
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
