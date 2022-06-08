@@ -1,6 +1,13 @@
 import Expense from "./components/Expense/Expense";
 import NewExpense from "./components/NewExpense/NewExpense";
 
+export interface Expense {
+  id?: string;
+  title: string;
+  amount: number;
+  date: Date;
+}
+
 const App = () => {
   const expenses = [
     {
@@ -23,9 +30,15 @@ const App = () => {
       date: new Date(2022, 5, 18),
     },
   ];
+
+  const addExpenseHandler = (expense: Expense) => {
+    console.log("In App.js");
+    console.log(expense);
+  };
+
   return (
     <div>
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expense items={expenses} />
     </div>
   );

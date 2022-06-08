@@ -1,31 +1,41 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Expense } from "../../../App";
 import "./ExpenseForm.css";
 
-interface ExpenseData {
-  title: string;
-  amount: number;
-  Date: string;
+export interface ExpenseData {
+  enteredTitle: string;
+  enteredAmount: number;
+  enteredDate: string;
 }
 
-const ExpenseForm = () => {
+interface ExpenseFormProps {
+  onSaveExpenseData: (v: Expense) => void;
+}
+
+const ExpenseForm = (props: ExpenseFormProps) => {
   // const [enteredTitle, setEnteredTitle] = useState("");
   // const [enteredAmount, setEnteredAmount] = useState("");
   // const [enteredDate, setEnteredDate] = useState("");
   const [userInput, setUserInput] = useState<ExpenseData>({
-    title: "",
-    amount: 10,
-    Date: "",
+    enteredTitle: "",
+    enteredAmount: 10,
+    enteredDate: "",
   });
-  console.log(userInput);
 
   const { register, handleSubmit, resetField } = useForm<ExpenseData>();
 
   const onValid = (data: ExpenseData) => {
+    const expenseData = {
+      title: data.enteredTitle,
+      amount: data.enteredAmount,
+      date: new Date(data.enteredDate),
+    };
+    props.onSaveExpenseData(expenseData);
     setUserInput(data);
-    resetField("amount");
-    resetField("Date");
-    resetField("title");
+    resetField("enteredAmount");
+    resetField("enteredDate");
+    resetField("enteredTitle");
   };
 
   return (
@@ -33,11 +43,16 @@ const ExpenseForm = () => {
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" {...register("title")} />
+          <input type="text" {...register("enteredTitle")} />
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
-          <input type="number" min="0.01" step="0.01" {...register("amount")} />
+          <input
+            type="number"
+            min="0.01"
+            step="0.01"
+            {...register("enteredAmount")}
+          />
         </div>
         <div className="new-expense__control">
           <label>Date</label>
@@ -45,7 +60,7 @@ const ExpenseForm = () => {
             type="date"
             min="2022-01-01"
             max="2024-12-31"
-            {...register("Date")}
+            {...register("enteredDate")}
           />
         </div>
       </div>
