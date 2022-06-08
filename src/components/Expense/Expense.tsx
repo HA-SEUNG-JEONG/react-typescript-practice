@@ -1,7 +1,8 @@
 import ExpenseItem from "./ExpenseItem";
 import "./css/Expenses.css";
-import React from "react";
+import React, { useState } from "react";
 import Card from "../UI/Card";
+import ExpenseFilter from "./ExpenseFilter";
 
 interface Item {
   items: {
@@ -13,10 +14,18 @@ interface Item {
 }
 
 const Expense = (props: Item) => {
+  const [filteredYear, setFilteredYear] = useState(2020);
+  const filterChangeHandler = (selectedYear: number) => {
+    setFilteredYear(selectedYear);
+  };
   return (
     <React.Fragment>
       <h2>Learn React</h2>
       <Card className="expenses">
+        <ExpenseFilter
+          selected={filteredYear}
+          onChangeFilter={filterChangeHandler}
+        />
         <ExpenseItem
           title={props.items[0].title}
           amount={props.items[0].amount}
