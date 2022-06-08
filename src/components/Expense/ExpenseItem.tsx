@@ -4,24 +4,20 @@ import ExpenseDate from "./ExpenseDate";
 import Card from "../UI/Card";
 import { useState } from "react";
 
-const ExpenseItem = (props: InfoData) => {
-  const [title, setTitle] = useState(props.title);
+const ExpenseItem = ({ date, title, amount }: InfoData) => {
+  const [titles, setTitles] = useState<string>(title); //useState 같은 Hook은 Component 안에서 호출되어야 함(예외사항 있음)
   console.log("ExpenseItem 평가됨");
 
   const onHandleClick = () => {
-    setTitle("updated");
-    console.log(title); // 값 바로 바뀌지 않음
+    setTitles("updated"); //비동기적으로 동작
+    console.log(title); // ExpenseItem은 한번 호출된 후에는 다시 렌더링 안됨 값 바로 바뀌지 않음
   };
   return (
     <Card className="expense-item">
-      <ExpenseDate
-        date={props.date}
-        title={props.title}
-        amount={props.amount}
-      />
+      <ExpenseDate date={date} title={title} amount={amount} />
       <div className="expense-item__description">
-        <h2>{title}</h2>
-        <div className="expense-item__price">${props.amount}</div>
+        <h2>{titles}</h2>
+        <div className="expense-item__price">${amount}</div>
       </div>
       <button onClick={onHandleClick}>Change Title</button>
     </Card>
