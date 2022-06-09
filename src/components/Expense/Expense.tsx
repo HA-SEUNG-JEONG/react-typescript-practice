@@ -21,19 +21,21 @@ const Expense = (props: Item) => {
   };
   return (
     <Card className="expenses">
-      <div>
+      <React.Fragment>
+        <h2>Learn React</h2>
         <ExpenseFilter
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
         {props.items.map((expense) => (
           <ExpenseItem
+            key={expense.id}
             title={expense.title}
             amount={expense.amount}
             date={expense.date}
           />
         ))}
-      </div>
+      </React.Fragment>
     </Card>
   );
 };
