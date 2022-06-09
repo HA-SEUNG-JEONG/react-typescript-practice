@@ -1,7 +1,7 @@
 import Expense from "./components/Expense/Expense";
 import NewExpense from "./components/NewExpense/NewExpense";
 
-export interface Expense {
+export interface Expenses {
   id?: string;
   title: string;
   amount: number;
@@ -31,9 +31,8 @@ const App = () => {
     },
   ];
 
-  const addExpenseHandler = (expense: Expense) => {
-    console.log("In App.js");
-    console.log(expense);
+  const addExpenseHandler = (expense: Expenses) => {
+    console.log("In App.tsx");
   };
 
   return (

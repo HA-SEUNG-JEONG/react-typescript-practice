@@ -1,20 +1,19 @@
 import "./NewExpense.css";
 
 import ExpenseForm from "./Form/ExpenseForm";
-import { Expense } from "../../App";
+import { Expenses } from "../../App";
 
 interface NewExpenseProps {
-  onAddExpense: (e: Expense) => void;
+  onAddExpense: (e: Expenses) => void;
 }
 
-const NewExpense = ({ onAddExpense }: NewExpenseProps) => {
-  const saveExpenseDataHandler = (enteredExpenseData: Expense) => {
+const NewExpense = (props: NewExpenseProps) => {
+  const saveExpenseDataHandler = (enteredExpenseData: Expenses) => {
     const expenseData = {
       ...enteredExpenseData,
       id: Math.random().toString(),
     };
-    console.log("expenseData", expenseData);
-    onAddExpense(expenseData);
+    props.onAddExpense(expenseData); //App으로 끌어올림
   };
   return (
     <div className="new-expense">

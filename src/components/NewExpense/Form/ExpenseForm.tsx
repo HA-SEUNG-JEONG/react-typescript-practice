@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Expense } from "../../../App";
+import { Expenses } from "../../../App";
 import "./ExpenseForm.css";
 
 export interface ExpenseData {
@@ -10,7 +10,7 @@ export interface ExpenseData {
 }
 
 interface ExpenseFormProps {
-  onSaveExpenseData: (v: Expense) => void;
+  onSaveExpenseData: (v: Expenses) => void;
 }
 
 const ExpenseForm = (props: ExpenseFormProps) => {
