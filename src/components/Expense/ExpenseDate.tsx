@@ -2,8 +2,8 @@ import InfoData from "../../info";
 import "./css/ExpenseDate.css";
 
 const ExpenseDate = (props: InfoData) => {
-  const month = props.date.toLocaleString("ko-KR", { month: "long" });
-  const day = props.date.toLocaleString("ko-KR", { day: "2-digit" });
+  const month = props.date.toLocaleString("en-US", { month: "long" });
+  const day = props.date.toLocaleString("en-US", { day: "2-digit" });
   const year = props.date.getFullYear();
   return (
     <div className="expense-date">

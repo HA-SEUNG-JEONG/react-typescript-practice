@@ -3,7 +3,6 @@ import "./css/Expenses.css";
 import React, { useState } from "react";
 import Card from "../UI/Card";
 import ExpenseFilter from "./ExpenseFilter";
-import { Expenses } from "../../App";
 
 interface Item {
   items: {
@@ -19,6 +18,9 @@ const Expense = (props: Item) => {
   const filterChangeHandler = (selectedYear: number) => {
     setFilteredYear(selectedYear);
   };
+  const filteredExpense = props.items.filter((exp) => {
+    return parseInt(exp.date.getFullYear().toString(), 10) !== filteredYear;
+  });
   return (
     <Card className="expenses">
       <React.Fragment>
@@ -27,7 +29,7 @@ const Expense = (props: Item) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        {props.items.map((expense) => (
+        {filteredExpense.map((expense) => (
           <ExpenseItem
             key={expense.id}
             title={expense.title}
