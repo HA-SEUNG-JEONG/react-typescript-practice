@@ -1,7 +1,7 @@
-import InfoData from "../../info";
-import "./css/ExpenseItem.css";
-import ExpenseDate from "./ExpenseDate";
-import Card from "../UI/Card";
+import InfoData from "../../../info";
+import "./ExpenseItem.css";
+import ExpenseDate from "../Date/ExpenseDate";
+import Card from "../../UI/Card";
 import { useState } from "react";
 
 const ExpenseItem = ({ date, title, amount }: InfoData) => {

@@ -1,6 +1,6 @@
-import ExpenseItem from "./ExpenseItem";
-import "./css/ExpensesList.css";
-import { Expenses } from "../../App";
+import ExpenseItem from "../Item/ExpenseItem";
+import "./ExpensesList.css";
+import { Expenses } from "../../../App";
 
 const ExpenseList = (props: any) => {
   let expensesContent: JSX.Element | JSX.Element[] = <p>No expenses Found</p>;

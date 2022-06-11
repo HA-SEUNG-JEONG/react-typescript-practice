@@ -1,5 +1,5 @@
 import React from "react";
-import "./css/ExpenseFilter.css";
+import "./ExpenseFilter.css";
 
 interface YearData {
   onChangeFilter: Function;

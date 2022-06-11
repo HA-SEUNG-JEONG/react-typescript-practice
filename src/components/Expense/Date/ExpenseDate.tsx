@@ -1,5 +1,5 @@
-import InfoData from "../../info";
-import "./css/ExpenseDate.css";
+import InfoData from "../../../info";
+import "./ExpenseDate.css";
 
 const ExpenseDate = (props: InfoData) => {
   const month = props.date.toLocaleString("en-US", { month: "long" });

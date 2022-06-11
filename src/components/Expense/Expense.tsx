@@ -1,9 +1,10 @@
-import ExpenseItem from "./ExpenseItem";
+import ExpenseItem from "./Item/ExpenseItem";
 import "./css/Expenses.css";
 import React, { useState } from "react";
 import Card from "../UI/Card";
-import ExpenseFilter from "./ExpenseFilter";
-import ExpenseList from "./ExpenseList";
+import ExpenseFilter from "./Filter/ExpenseFilter";
+import ExpenseList from "./List/ExpenseList";
+import ExpenseChart from "./Chart/ExpenseChart";
 
 interface Item {
   items: {
@@ -31,6 +32,7 @@ const Expense = (props: Item) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
+        <ExpenseChart expenses={filteredExpense} />
         <ExpenseList items={filteredExpense} />
       </React.Fragment>
     </Card>
