@@ -21,6 +21,19 @@ const Expense = (props: Item) => {
   const filteredExpense = props.items.filter((exp) => {
     return parseInt(exp.date.getFullYear().toString(), 10) !== filteredYear;
   });
+
+  let expensesContent: JSX.Element | JSX.Element[] = <p>No expenses Found</p>;
+
+  if (filteredExpense.length > 0) {
+    expensesContent = filteredExpense.map((expense) => (
+      <ExpenseItem
+        key={expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+      />
+    ));
+  }
   return (
     <Card className="expenses">
       <React.Fragment>
@@ -29,14 +42,7 @@ const Expense = (props: Item) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        {filteredExpense.map((expense) => (
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ))}
+        {expensesContent}
       </React.Fragment>
     </Card>
   );

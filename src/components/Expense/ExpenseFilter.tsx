@@ -8,7 +8,7 @@ interface YearData {
 
 const ExpenseFilter = (props: YearData) => {
   const onFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    props.onChangeFilter(event.currentTarget.value);
+    props.onChangeFilter(event.target.value);
   };
   return (
     <div className="expenses-filter">
