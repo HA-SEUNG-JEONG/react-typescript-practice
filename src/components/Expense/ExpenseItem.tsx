@@ -13,14 +13,16 @@ const ExpenseItem = ({ date, title, amount }: InfoData) => {
     console.log(title); // ExpenseItem은 한번 호출된 후에는 다시 렌더링 안됨 값 바로 바뀌지 않음
   };
   return (
-    <Card className="expense-item">
-      <ExpenseDate date={date} title={title} amount={amount} />
-      <div className="expense-item__description">
-        <h2>{titles}</h2>
-        <div className="expense-item__price">${amount}</div>
-      </div>
-      <button onClick={onHandleClick}>Change Title</button>
-    </Card>
+    <li>
+      <Card className="expense-item">
+        <ExpenseDate date={date} title={title} amount={amount} />
+        <div className="expense-item__description">
+          <h2>{titles}</h2>
+          <div className="expense-item__price">${amount}</div>
+        </div>
+        <button onClick={onHandleClick}>Change Title</button>
+      </Card>
+    </li>
   );
 };
 

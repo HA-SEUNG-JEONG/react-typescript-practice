@@ -3,6 +3,7 @@ import "./css/Expenses.css";
 import React, { useState } from "react";
 import Card from "../UI/Card";
 import ExpenseFilter from "./ExpenseFilter";
+import ExpenseList from "./ExpenseList";
 
 interface Item {
   items: {
@@ -22,18 +23,6 @@ const Expense = (props: Item) => {
     return parseInt(exp.date.getFullYear().toString(), 10) !== filteredYear;
   });
 
-  let expensesContent: JSX.Element | JSX.Element[] = <p>No expenses Found</p>;
-
-  if (filteredExpense.length > 0) {
-    expensesContent = filteredExpense.map((expense) => (
-      <ExpenseItem
-        key={expense.id}
-        title={expense.title}
-        amount={expense.amount}
-        date={expense.date}
-      />
-    ));
-  }
   return (
     <Card className="expenses">
       <React.Fragment>
@@ -42,7 +31,7 @@ const Expense = (props: Item) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        {expensesContent}
+        <ExpenseList items={filteredExpense} />
       </React.Fragment>
     </Card>
   );

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Expenses } from "../../../App";
 import "./ExpenseForm.css";
@@ -11,6 +11,7 @@ export interface ExpenseData {
 
 interface ExpenseFormProps {
   onSaveExpenseData: (v: Expenses) => void;
+  onCancel: (e: React.MouseEvent) => void;
 }
 
 const ExpenseForm = (props: ExpenseFormProps) => {
@@ -65,6 +66,9 @@ const ExpenseForm = (props: ExpenseFormProps) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={props.onCancel}>
+          Cancel
+        </button>
         <button>Add Expense</button>
       </div>
     </form>
